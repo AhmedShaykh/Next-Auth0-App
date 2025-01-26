@@ -1,0 +1,1 @@
+# Next.JS Auth0 Application!
