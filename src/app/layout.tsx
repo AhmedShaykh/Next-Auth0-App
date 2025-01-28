@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/Components/ThemeProvider";
 import ContextProvider from "@/Components/ContextProvider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import Header from "@/Components/Header";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -16,20 +17,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <UserProvider>
-          <ContextProvider>
+      <UserProvider>
+        <ContextProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            disableTransitionOnChange
+          >
             <body>
+              <Header />
               {children}
             </body>
-          </ContextProvider>
-        </UserProvider>
-      </ThemeProvider>
+          </ThemeProvider>
+        </ContextProvider>
+      </UserProvider>
     </html>
   )
 };
